@@ -12,3 +12,17 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Tarea {
+  id          Int      @id @default(autoincrement())
+  descripcion String
+  fechaLimite DateTime
+  estado      EstadoTarea @default(PENDIENTE)
+  createdAt   DateTime @default(now())
+}
+
+enum EstadoTarea {
+  PENDIENTE
+  EN_PROCESO
+  COMPLETADO
+}
